@@ -1,0 +1,94 @@
+.login{
+    background-color: #F0F0F0;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+.log-container{
+   padding: 7.0rem;
+   margin-left: 340px;
+}
+.log-form{
+    top: 40%;
+    left: 50%;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    max-width: 400px;
+    height: 100%;
+}
+.log-top{
+    font-size: 0.9rem;
+    margin-left: 150px;
+    margin-top: 30px;
+}
+.log-h2{
+    margin-top: 30px;
+}
+label{
+    margin-left: 20px;
+}
+.login-input-text{
+    margin-top: 8px;
+    display: block;
+    border: none;
+    height: 3rem;
+    width: 85%;
+    margin-left: 20px ;
+    margin-bottom: 1.5rem;
+    padding: 0.2rem 0.3rem;
+    font-size: small;
+    color: #000;
+    border-radius: 8px 8px;
+    border:1.5px solid #000000;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    background-color:#FFFFFF;
+  }
+  .login-input-text:hover{
+    outline: 0.5px solid #000000;
+    -webkit-box-shadow: 2px 2px 9px -2px #000000;
+            box-shadow: 2px 2px 9px -2px #000000;
+  }
+  .log-but{
+    margin-top: -15px;
+  }
+  .login-button{
+    padding: 7px 49px;
+    border: 1px solid #010080;
+    background-color: #010080;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    cursor: pointer; 
+    margin-top: 25px;
+    margin-left: 130px; 
+  }
+  @media screen and (max-width: 600px) {
+    .login{
+        background-color: #F0F0F0;
+        height: 100%;
+        overflow: hidden;
+    }
+    .log-container{
+        padding: none;
+        background-color: #F0F0F0;
+        height: 80%;
+        width: 405px;
+        margin-left: -43px;
+    }
+    .log-form{
+        width: 330px;
+        margin-top: 80px;
+        margin-left: -55px;
+    }
+    
+    .log-h2{
+        margin-left: -30px;
+    }
+    .login-input-text{
+      height: 2rem;
+    }
+    .log-but{
+      margin-left: -30px;
+    }
+  }

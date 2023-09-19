@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import  {auth}  from "../../firebase";
 import { useNavigate } from 'react-router-dom';
+import "./styles.css"
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -21,26 +22,35 @@ const Login = () => {
     };
 
 return (
-<div className="sign-in-container">
-      <form onSubmit={signIn}>
-        <h1>Log In to your Account</h1>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        /><br/>
-        <br/>
-        <input
-          type="password"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        /><br/>
-        <br/>
-        <button type="submit">Log In</button>
-      </form>
-    </div>
+<div className='login'>
+            <div className='log-container'>
+               <form className='log-form' onSubmit={signIn}>
+                 <div className='log-top'>
+                  <h2 className='log-h2'> Welcome! </h2> 
+                 </div>
+                 <label>Email</label>
+              <input
+                className="login-input-text"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <label>Password</label>
+              <input
+                className="login-input-text"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className='log-but'>
+              <button className="login-button" type='submit"'>
+                Log In
+              </button>
+              </div>
+              <br/>
+               </form>
+            </div>
+        </div>
 );
 }
 
