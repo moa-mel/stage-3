@@ -3,9 +3,11 @@ import "./styles.css";
 
 export class UploadComponent extends Component {
   state = {
-    imageTags: [], // Change to an array to store multiple images and tags
+    imageTags: [],
     imageSrc: null,
     currentTag: "",
+    loading: false, // Added loading state
+    searchText: "", // Added search text state
   };
 
   componentDidMount() {
@@ -83,16 +85,23 @@ export class UploadComponent extends Component {
     if (files.length > 0) {
       let reader = new FileReader();
       reader.readAsDataURL(files[0]);
+
+      // Set loading to true while loading the image
+      this.setState({ loading: true });
+
       reader.onloadend = () => {
         const imageSrc = reader.result;
 
-        this.setState({ imageSrc });
+        // Simulate a delay to demonstrate the loading state
+        setTimeout(() => {
+          this.setState({ imageSrc, loading: false });
 
-        const tag = prompt("Enter a tag for this image:");
+          const tag = prompt("Enter a tag for this image:");
 
-        if (tag) {
-          this.addTagToImage(tag, imageSrc);
-        }
+          if (tag) {
+            this.addTagToImage(tag, imageSrc);
+          }
+        }, 1000); // You can adjust the delay as needed
       };
     }
   };
@@ -108,11 +117,20 @@ export class UploadComponent extends Component {
     }
   };
 
+  handleSearch = (e) => {
+    this.setState({ searchText: e.target.value });
+  };
+
   render() {
-    const { imageTags, imageSrc, currentTag } = this.state;
+    const { imageTags, imageSrc, currentTag, loading, searchText } = this.state;
+
+    // Filter images based on the search text
+    const filteredImages = imageTags.filter((item) =>
+      item.tag.toLowerCase().includes(searchText.toLowerCase())
+    );
 
     return (
-      <div id="drop-area">
+      <div id="drop-area" >
         <input
           type="file"
           id="fileElem"
@@ -126,13 +144,28 @@ export class UploadComponent extends Component {
             Drag Image here or click to upload
           </div>
         </label>
-        {imageTags.map((item, index) => (
-          <div key={index}>
-            <img src={item.imageSrc} className="image" alt="Uploaded" />
-            <div>Tag: {item.tag}</div>
+        {loading && <div className="loading-spinner">Loading...</div>}
+        {imageSrc && !loading && (
+          <div key={imageSrc} className="image-list">
+            <img src={imageSrc} className="image" alt="Uploaded" />
+            <div>Tag: {currentTag}</div>
           </div>
-        ))}
+        )}
        
+        <input
+          type="text"
+          placeholder="Search tags"
+          value={searchText}
+          onChange={this.handleSearch}
+        />
+        <div className="image-list">
+          {filteredImages.map((item, index) => (
+            <div key={index}>
+              <img src={item.imageSrc} className="image" alt="Uploaded" />
+              <div>Tag: {item.tag}</div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

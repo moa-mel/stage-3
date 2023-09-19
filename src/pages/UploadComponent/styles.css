@@ -40,4 +40,9 @@
     background-repeat: no-repeat;
     background-position: 50% 50%;
   }
-  
+  .image-list{
+    margin-top: 20px;
+    display: flex;
+    column-gap: 20px;
+    margin-left: 20px;
+  }
