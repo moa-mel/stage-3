@@ -8,8 +8,9 @@ const Dd = () => {
   const dragItem = useRef();
   const dragOverItem = useRef();
   const [list, setList] = useState([
-    { id: '1', content: <img src={image1} alt=" " />, tag: 'tag 1' },
-    { id: '2', content: <img src={image2} alt=" " />, tag: 'Tag 2' },
+    { id: 'image-1', content: <img src={image1} alt=" " style={{ width: '200px', height: 'auto' }} />, tag: 'Nature' },
+    { id: 'image-2', content: <img src={image2} alt=" " style={{ width: '200px', height: 'auto' }} />, tag: 'Travel' },
+    // Add more images with tags as needed
     // Add more images with tags as needed
   ]);
 
@@ -48,14 +49,16 @@ const Dd = () => {
   return (
     <>
       <input
+      className='dd-input'
         type="text"
         placeholder="Search tags"
         value={searchText}
         onChange={handleSearch}
       />
+       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '20px' }}>
       {filteredList.map((item, index) => (
         <div
-          style={{ backgroundColor: 'lightblue', margin: '20px 25%', textAlign: 'center', fontSize: '40px' }}
+          style={{ margin: '2px 5%', textAlign: 'center', fontSize: '2px', width: '10px' }}
           onDragStart={(e) => dragStart(e, index)}
           onDragEnter={(e) => dragEnter(e, index)}
           onDragEnd={drop}
@@ -63,9 +66,10 @@ const Dd = () => {
           draggable
         >
           {item.content}
-          <div>Tag: {item.tag}</div>
+          <div style={{fontSize:'16px'}}> {item.tag}</div>
         </div>
       ))}
+      </div>
     </>
   );
 };

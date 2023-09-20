@@ -1,4 +1,18 @@
+.dd-input{
+    margin-top: 12px;
+   margin-left: 440px;
+    height: 2rem;
+    width: 35%;
+    margin-right: 135px ;
+    margin-bottom: 1.5rem; 
+    padding: 0.2rem 0.3rem;
+    font-size: small;
+	background-color: #F1F6FF;
+    border:1.5px solid #858585;
+    border-radius: 11px;
+}
 .image-list{
+    margin-top: 20px;
 display: flex;
 column-gap: 20px;
 }
