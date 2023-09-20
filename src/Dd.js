@@ -1,20 +1,26 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import image1 from "./images/image1.jpg";
-import image2 from "./images/image2.jpg"; // Import your images
+import image2 from "./images/image2.jpg"; // Import your images 
 import "./Dd.css"
 
 const Dd = () => {
-  
+  const [loading, setLoading] = useState(true); // State to track loading
   const dragItem = useRef();
   const dragOverItem = useRef();
-  const [list, setList] = useState([
-    { id: 'image-1', content: <img src={image1} alt=" " style={{ width: '200px', height: 'auto' }} />, tag: 'Nature' },
-    { id: 'image-2', content: <img src={image2} alt=" " style={{ width: '200px', height: 'auto' }} />, tag: 'Travel' },
-    // Add more images with tags as needed
-    // Add more images with tags as needed
-  ]);
-
+  const [list, setList] = useState([]);
   const [searchText, setSearchText] = useState('');
+
+  useEffect(() => {
+    // Simulate loading images
+    setTimeout(() => {
+      setList([
+        { id: '1', content: <img src={image1} alt=" " style={{ width: '200px', height: 'auto' }}/>, tag: 'Nature' },
+        { id: '2', content: <img src={image2} alt=" " style={{ width: '200px', height: 'auto' }}/>, tag: 'Travel' },
+        // Add more images with tags as needed
+      ]);
+      setLoading(false); // Set loading to false when images are ready
+    }, 8000); // Simulate a 2-second loading delay
+  }, []);
 
   const dragStart = (e, position) => {
     dragItem.current = position;
@@ -47,30 +53,36 @@ const Dd = () => {
   );
 
   return (
-    <>
-      <input
-      className='dd-input'
-        type="text"
-        placeholder="Search tags"
-        value={searchText}
-        onChange={handleSearch}
-      />
-       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '20px' }}>
-      {filteredList.map((item, index) => (
-        <div
-          style={{ margin: '2px 5%', textAlign: 'center', fontSize: '2px', width: '10px' }}
-          onDragStart={(e) => dragStart(e, index)}
-          onDragEnter={(e) => dragEnter(e, index)}
-          onDragEnd={drop}
-          key={item.id}
-          draggable
-        >
-          {item.content}
-          <div style={{fontSize:'16px'}}> {item.tag}</div>
-        </div>
-      ))}
-      </div>
-    </>
+    <div>
+      {loading ? ( // Display loading spinner when loading is true
+        <p>Loading...</p>
+      ) : (
+        <>
+          <input
+          className='dd-input'
+            type="text"
+            placeholder="Search tags"
+            value={searchText}
+            onChange={handleSearch}
+          />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '20px' }}>
+            {filteredList.map((item, index) => (
+              <div
+                style={{ textAlign: 'center', fontSize: '20px' }}
+                onDragStart={(e) => dragStart(e, index)}
+                onDragEnter={(e) => dragEnter(e, index)}
+                onDragEnd={drop}
+                key={item.id}
+                draggable
+              >
+                {item.content}
+                <div>Tag: {item.tag}</div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 
