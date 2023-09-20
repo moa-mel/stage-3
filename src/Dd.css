@@ -11,8 +11,18 @@
     border:1.5px solid #858585;
     border-radius: 11px;
 }
-.image-list{
-    margin-top: 20px;
-display: flex;
-column-gap: 20px;
+.dd-image{
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 20px
+}
+@media screen and (max-width: 768px) {
+    .dd-input{
+        margin-left: 40px;
+        width: 75%;
+    }
+    .dd-image{
+        margin-left: -1px;
+        flex-direction: column;
+    }
 }

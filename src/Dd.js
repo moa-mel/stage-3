@@ -1,6 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import image1 from "./images/image1.jpg";
-import image2 from "./images/image2.jpg"; // Import your images 
+import image2 from "./images/image2.jpg"; 
+import fire from "./images/fire.jpg"; 
+import baloon from "./images/baloon.jpg"; 
+import sitting from "./images/sitting.jpg"; 
+import sky from "./images/sky.jpg"; 
+import moon from "./images/moon.jpg"; 
+import sunset from "./images/sunset.jpg"; 
 import "./Dd.css"
 
 const Dd = () => {
@@ -14,12 +20,17 @@ const Dd = () => {
     // Simulate loading images
     setTimeout(() => {
       setList([
-        { id: '1', content: <img src={image1} alt=" " style={{ width: '200px', height: 'auto' }}/>, tag: 'Nature' },
-        { id: '2', content: <img src={image2} alt=" " style={{ width: '200px', height: 'auto' }}/>, tag: 'Travel' },
-        // Add more images with tags as needed
+        { id: '1', content: <img src={image1} alt=" " style={{ width: '200px', height: 'auto' }}/>, tag: 'nature' },
+        { id: '2', content: <img src={image2} alt=" " style={{ width: '200px', height: 'auto' }}/>, tag: 'travel' },
+        { id: '3', content: <img src={fire} alt=" " style={{ width: '200px', height: '300px' }}/>, tag: 'fire' },
+        { id: '4', content: <img src={baloon} alt=" " style={{ width: '200px', height: 'auto' }}/>, tag: 'sky' },
+        { id: '5', content: <img src={sitting} alt=" " style={{ width: '200px', height: '300px' }}/>, tag: 'travel' },
+        { id: '6', content: <img src={moon} alt=" " style={{ width: '200px', height: '300px' }}/>, tag: 'travel' },
+        { id: '7', content: <img src={sky} alt=" " style={{ width: '200px', height: '300px' }}/>, tag: 'sky' },
+        { id: '8', content: <img src={sunset} alt=" " style={{ width: '200px', height: 'auto' }}/>, tag: 'sun' },
       ]);
       setLoading(false); // Set loading to false when images are ready
-    }, 8000); // Simulate a 2-second loading delay
+    }, 5000); // Simulate a 2-second loading delay
   }, []);
 
   const dragStart = (e, position) => {
@@ -65,7 +76,7 @@ const Dd = () => {
             value={searchText}
             onChange={handleSearch}
           />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '20px' }}>
+          <div className='dd-image' >
             {filteredList.map((item, index) => (
               <div
                 style={{ textAlign: 'center', fontSize: '20px' }}

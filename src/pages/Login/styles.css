@@ -63,7 +63,7 @@ label{
     margin-top: 25px;
     margin-left: 130px; 
   }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     .login{
         background-color: #F0F0F0;
         height: 100%;
@@ -79,7 +79,7 @@ label{
     .log-form{
         width: 330px;
         margin-top: 80px;
-        margin-left: -55px;
+        margin-left: -40px;
     }
     
     .log-h2{
