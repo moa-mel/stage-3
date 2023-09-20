@@ -14,7 +14,7 @@ const Login = () => {
       signInWithEmailAndPassword(auth, 'user@example.com', '1Password' )
         .then((userCredential) => {
           console.log(userCredential);
-          navigate('/upload')
+          navigate('/dd')
         })
         .catch((error) => {
           console.log(error);
