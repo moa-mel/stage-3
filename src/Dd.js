@@ -8,13 +8,18 @@ import sky from "./images/sky.jpg";
 import moon from "./images/moon.jpg"; 
 import sunset from "./images/sunset.jpg"; 
 import "./Dd.css"
+import {  signOut } from "firebase/auth";
+import {auth} from './firebase';
+import { useNavigate } from 'react-router-dom';
 
 const Dd = () => {
-  const [loading, setLoading] = useState(true); // State to track loading
+  const [loading, setLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);  // State to track loading
   const dragItem = useRef();
   const dragOverItem = useRef();
   const [list, setList] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Simulate loading images
@@ -58,10 +63,23 @@ const Dd = () => {
     setSearchText(searchTerm);
   };
 
+  const handleLogout = () => {               
+    signOut(auth).then(() => {
+    // Sign-out successful.
+        navigate("/");
+        console.log("Signed out successfully")
+    }).catch((error) => {
+    // An error happened.
+    });
+}
+
+
   // Filter the list based on the search text
   const filteredList = list.filter(item =>
     item.tag.toLowerCase().includes(searchText)
   );
+  
+  
 
   return (
     <div>
@@ -69,6 +87,7 @@ const Dd = () => {
         <p>Loading...</p>
       ) : (
         <>
+         <button onClick={handleLogout} className='dd-logout'>Logout</button>
           <input
           className='dd-input'
             type="text"
@@ -76,6 +95,8 @@ const Dd = () => {
             value={searchText}
             onChange={handleSearch}
           />
+          <div>
+          </div>
           <div className='dd-image' >
             {filteredList.map((item, index) => (
               <div

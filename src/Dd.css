@@ -16,6 +16,15 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
     gap: 20px
 }
+.dd-logout{
+    padding: 7px 30px;
+    border: 1px solid #010080;
+    background-color: #010080;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
 @media screen and (max-width: 768px) {
     .dd-input{
         margin-left: 40px;
