@@ -87,7 +87,6 @@ const Dd = () => {
         <p>Loading...</p>
       ) : (
         <>
-         <button onClick={handleLogout} className='dd-logout'>Logout</button>
           <input
           className='dd-input'
             type="text"
@@ -95,6 +94,7 @@ const Dd = () => {
             value={searchText}
             onChange={handleSearch}
           />
+          <button onClick={handleLogout} className='dd-logout'>Logout</button>
           <div>
           </div>
           <div className='dd-image' >
