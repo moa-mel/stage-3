@@ -35,7 +35,7 @@ const Dd = () => {
         { id: '8', content: <img src={sunset} alt=" " style={{ width: '200px', height: 'auto' }}/>, tag: 'sun' },
       ]);
       setLoading(false); // Set loading to false when images are ready
-    }, 1300); // Simulate a 2-second loading delay
+    }, 2000); // Simulate a 2-second loading delay
   }, []);
 
   const dragStart = (e, position) => {
